@@ -1,0 +1,106 @@
+Project Overview
+
+This application allows users to upload a PDF file, extract key information, and generate interactive quizzes and games. Users can track their progress, view game points, and revisit past quizzes.
+
+Tech Stack
+
+Frontend: Next.js, TailwindCSS
+
+Backend: Golang (with SQLite/PostgreSQL & Prisma for database management)
+
+Auth: NextAuth or Firebase Authentication
+
+File Processing: PDF parsing library (e.g., pdf.js or PyMuPDF via API)
+
+Deployment: Vercel (Frontend), Railway/Fly.io (Backend)
+
+Core Features & Screens
+
+1. Authentication & User Management
+
+Users can sign up, log in, and manage profiles.
+
+Login via email/password or social auth.
+
+User data is stored with quiz/game history and points.
+
+2. Dashboard (Home Page)
+
+PDF Upload: Drag & drop or click-to-upload functionality.
+
+Processing Status: Real-time updates while extracting text.
+
+Game & Quiz Progress: Recent quizzes, scores, and points.
+
+List of Uploaded PDFs: Users can manage past uploads.
+
+Quick Actions: Start a new quiz, review previous quizzes, or generate new questions.
+
+User Stats: Display total points, achievements, and progress.
+
+3. PDF Processing & Quiz Generation
+
+Extract text from uploaded PDFs and analyze content.
+
+Identify key terms, definitions, and statements.
+
+Generate quiz questions and game content dynamically.
+
+4. Quiz & Game Modes
+
+Multiple-Choice Quiz: Four options, one correct answer.
+
+Flashcard Match: Match terms with definitions.
+
+Fill in the Blanks: Remove key words from sentences.
+
+True or False: Users determine the accuracy of a statement.
+
+Word Scramble: Unscramble key terms.
+
+5. Game & Quiz Tracking
+
+Store users' quiz results and track improvement.
+
+Display scores and performance analytics.
+
+Achievements for milestones (optional).
+
+6. Settings & Profile Management
+
+Manage account details and preferences.
+
+View leaderboard and personal achievements.
+
+Development Roadmap (MVP Approach)
+
+Phase 1: UI/UX Implementation (8 Hours)
+
+Build dashboard UI (upload, game tracking, user stats).
+
+Implement sidebar navigation (Dashboard, My PDFs, Settings).
+
+Design quiz/game UI templates.
+
+Phase 2: PDF Upload & Processing
+
+Implement PDF file upload functionality.
+
+Parse PDF content and extract text.
+
+Store extracted data in the database.
+
+Phase 3: Quiz & Game Logic
+
+Implement quiz generation from extracted content.
+
+Build multiple-choice, fill-in-the-blanks, and flashcard games.
+
+Track user progress and store scores.
+
+Phase 4: Deployment & Final Touches
+
+Deploy frontend (Vercel) & backend (Railway/Fly.io).
+
+Final testing and UI polish.
+

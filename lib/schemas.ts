@@ -1,20 +1,70 @@
 import { z } from "zod";
 
-export const questionSchema = z.object({
-  question: z.string(),
-  options: z
-    .array(z.string())
-    .length(4)
-    .describe(
-      "Four possible answers to the question. Only one should be correct. They should all be of equal lengths.",
-    ),
-  answer: z
-    .enum(["A", "B", "C", "D"])
-    .describe(
-      "The correct answer, where A is the first option, B is the second, and so on.",
-    ),
+export const quizSchema = z.object({
+  level: z.number().min(1).max(5),
+  multipleChoice: z.array(
+    z.object({
+      question: z.string(),
+      options: z
+        .array(z.string())
+        .length(4)
+        .describe(
+          "Four possible answers to the question. Only one should be correct, and they should be of equal length."
+        ),
+      answer: z.enum(["A", "B", "C", "D"]),
+    })
+  ),
+  trueFalse: z.array(
+    z.object({
+      statement: z.string(),
+      answer: z.enum(["True", "False"]),
+    })
+  ),
+  fillInTheBlanks: z.array(
+    z.object({
+      sentence: z.string(),
+      answer: z.string(),
+    })
+  ),
+  wordScramble: z.array(
+    z.object({
+      scrambled: z.string(),
+      answer: z.string(),
+    })
+  ),
+  flashcards: z.array(
+    z.object({
+      term: z.string(),
+      definition: z.string(),
+    })
+  ),
 });
 
-export type Question = z.infer<typeof questionSchema>;
+export type Quiz = z.infer<typeof quizSchema>;
 
-export const questionsSchema = z.array(questionSchema).length(4);
+export const quizesSchema = z.array(quizSchema).length(4);
+export type QuizData = {
+  level: number;
+  multipleChoice: {
+    question: string;
+    options: [string, string, string, string]; // Always 4 options
+    answer: "A" | "B" | "C" | "D"; // Correct answer
+  }[];
+  trueFalse: {
+    statement: string;
+    answer: "True" | "False";
+  }[];
+  fillInTheBlanks: {
+    sentence: string;
+    answer: string;
+  }[];
+  wordScramble: {
+    scrambled: string;
+    answer: string;
+  }[];
+  flashcards: {
+    term: string;
+    definition: string;
+  }[];
+};
+
